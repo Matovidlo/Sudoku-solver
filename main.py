@@ -5,6 +5,20 @@
     Brief:  Simple sudoku solver and generator
 """
 
+class Field():
+
+    def __init__(self):
+        self.value = 0
+
+    def setValue(self, val):
+        self.value = val
+
+    def getValue(self):
+        return self.value
+
+    value = None
+    follow = list()
+    evalueatable = True
 
 class Sudoku():
 
@@ -13,6 +27,14 @@ class Sudoku():
 
     def __str__(self):
         "create string from this object"
+        ret = ""
+
+        for x in 9:
+            for y in 9:
+                ret.append(self.gameArray[x][y].value)
+            ret.append("\n")
+
+        return ret
 
     def create(self):
         "docstring"
@@ -26,21 +48,11 @@ class Sudoku():
         "docstring"
         return None
 
-    gameArray = [[Field(0)]*9 for i in range(9)]
+    gameArray = [[Field()]*9 for i in range(9)]
 
-class Field():
-
-    def __init__(self, v):
-        self.value = v
-
-    def __init__(self):
-        self.value = 0
-
-    value = None
-    follow = list()
-    evalueatable = True
 
 def main():
+    sudoku = Sudoku()
     return None
 
 if __name__ == "__main__":
