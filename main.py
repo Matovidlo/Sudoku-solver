@@ -29,10 +29,12 @@ class Sudoku():
         "create string from this object"
         ret = ""
 
-        for x in 9:
-            for y in 9:
-                ret.append(self.gameArray[x][y].value)
-            ret.append("\n")
+        for x in range(9):
+            for y in range(9):
+                ret = ret + str(self.gameArray[x][y].value) + " "
+                if y is 3:
+                    print("\b|")
+            ret = ret + "\n"
 
         return ret
 
@@ -54,7 +56,7 @@ class Sudoku():
 
 def main():
     sudoku = Sudoku()
-    sudoku.print()
+    print(sudoku)
     return None
 
 if __name__ == "__main__":
