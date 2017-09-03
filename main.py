@@ -20,6 +20,12 @@ class Field():
     def removeItem(self, item):
         self.follow.remove(item)
 
+    def setFollow(self, follow):
+        if len(follow) is 1:
+            self.value = follow[0]
+        self.evalueatable = False
+        self.follow = follow
+
     def checkFollow(self):
         if len(self.follow) is 1:
             self.__setValue(self.follow[0])
@@ -68,44 +74,39 @@ class Sudoku():
 
         for i in range(9):
             if self.gameArray[i][y].value is not 0 and self.gameArray[x][i].value not in follow:
-                follow.append(self.gameArray[x][i].value)
+                follow.append(self.gameArray[i][y].value)
 
         minx = 0
         miny = 0
-        maxx = 0
-        maxy = 0
 
-        if x < 3:
-            minx = 0
-            maxx = 2
-        elif x < 6:
-            minx = 3
-            maxx = 5
-        else:
-            minx = 6
-            maxx = 8
+        if x >= 3 and x < 6:
+            minx += 3
+        elif x >= 6:
+            minx = +6
 
-        if y < 3:
-            miny = 0
-            maxy = 2
-        elif y < 6:
-            miny = 3
-            maxy = 5
-        else:
-            miny = 6
-            maxy = 8
+        if y >= 3 and y < 6:
+            minx += 3
+        elif y >= 6:
+            minx = +6
 
+        for xx in range(3):
+            tempx = xx + minx
+            for yy in range(3):
+                tempy = yy + miny
+                if self.gameArray[tempx][tempy].value is not 0 and self.gameArray[x][i].value not in follow:
+                    follow.append(self.gameArray[tempx][tempy].value)
 
-        # for xx in range(3):
-            # for yy in range(3):
-
-
-
-    def getSubArray(self):
-        return None
+        return follow
 
     def solve(self):
         "docstring"
+
+        for x in range(9):
+            for y in range(9):
+                if self.gameArray[x][y].evalueatable is True:
+                    follow = self.getFollow(x, y)
+                    self.gameArray[x][y].setFollow(follow)
+
         return None
 
     def print2pdf(self):
