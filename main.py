@@ -46,6 +46,7 @@ class Sudoku():
 
     def print(self):
         "docstring"
+        print(self.gameArray)
         return None
 
     gameArray = [[Field()]*9 for i in range(9)]
@@ -53,6 +54,7 @@ class Sudoku():
 
 def main():
     sudoku = Sudoku()
+    sudoku.print()
     return None
 
 if __name__ == "__main__":
