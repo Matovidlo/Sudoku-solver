@@ -12,8 +12,9 @@ class Field():
         self.follow = list(n + 1 for n in range(9))
 
     def __setValue(self, val):
-        if (val > 0 and val < 10):
+        if val > 0 and val < 10:
             self.value = val
+            return true
         return false
 
     def checkFollow(self):
