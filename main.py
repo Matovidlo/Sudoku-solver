@@ -9,9 +9,12 @@ class Field():
 
     def __init__(self):
         self.value = 0
+        self.follow = list(range(1, 9))
 
-    def setValue(self, val):
-        self.value = val
+    def __setValue(self, val):
+        if (val > 0 and val < 10):
+            self.value = val
+        return false
 
     def getValue(self):
         return self.value
@@ -31,14 +34,14 @@ class Sudoku():
 
         for x in range(9):
             for y in range(9):
-                ret = ret + str(self.gameArray[x][y].value) + " "
+                ret = ret + str(self.gameArray[x][y].getValue()) + " "
                 if y is 3:
                     print("\b|")
             ret = ret + "\n"
 
         return ret
 
-    def create(self):
+    def create(self, difficulity):
         "docstring"
         return None
 
@@ -46,9 +49,9 @@ class Sudoku():
         "docstring"
         return None
 
-    def print(self):
+    def printf(self):
         "docstring"
-        print(self.gameArray)
+        # print(self.gameArray)
         return None
 
     gameArray = [[Field()]*9 for i in range(9)]
