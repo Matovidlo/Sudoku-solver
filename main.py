@@ -60,7 +60,6 @@ class Sudoku():
         "docstring"
         return None
 
-
 def main():
     sudoku = Sudoku()
     print(sudoku)
