@@ -9,9 +9,14 @@ class Field():
 
     def __init__(self):
         self.value = 0
+        self.follow = list(n + 1 for n in range(9))
 
-    def setValue(self, val):
+    def __setValue(self, val):
         self.value = val
+
+    def checkFollow(self):
+        if len(self.follow) is 1:
+            self.__setValue(self.follow[0])
 
     def getValue(self):
         return self.value
@@ -22,19 +27,24 @@ class Field():
 
 class Sudoku():
 
+    gameArray = None
+
     def __init__(self):
         "constructor"
+        self.gameArray = [[Field()]*9 for i in range(9)]
 
     def __str__(self):
         "create string from this object"
-        ret = ""
+        ret = "\n"
 
         for x in range(9):
             for y in range(9):
                 ret = ret + str(self.gameArray[x][y].value) + " "
-                if y is 3:
-                    print("\b|")
+                if y % 3 is 2 and y is not 8:
+                    ret = ret + "| "
             ret = ret + "\n"
+            if x % 3 is 2 and x is not 8:
+                ret = ret + "---------------------\n"
 
         return ret
 
@@ -46,11 +56,9 @@ class Sudoku():
         "docstring"
         return None
 
-    def print(self):
+    def print2pdf(self):
         "docstring"
         return None
-
-    gameArray = [[Field()]*9 for i in range(9)]
 
 
 def main():
