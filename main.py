@@ -17,6 +17,9 @@ class Field():
             return True
         return False
 
+    def removeItem(self, item):
+        self.follow.remove(item)
+
     def checkFollow(self):
         if len(self.follow) is 1:
             self.__setValue(self.follow[0])
@@ -53,6 +56,52 @@ class Sudoku():
 
     def create(self, difficulity):
         "docstring"
+        return None
+
+    def getFollow(self, x, y):
+
+        follow = list()
+
+        for i in range(9):
+            if self.gameArray[x][i].value is not 0 and self.gameArray[x][i].value not in follow:
+                follow.append(self.gameArray[x][i].value)
+
+        for i in range(9):
+            if self.gameArray[i][y].value is not 0 and self.gameArray[x][i].value not in follow:
+                follow.append(self.gameArray[x][i].value)
+
+        minx = 0
+        miny = 0
+        maxx = 0
+        maxy = 0
+
+        if x < 3:
+            minx = 0
+            maxx = 2
+        elif x < 6:
+            minx = 3
+            maxx = 5
+        else:
+            minx = 6
+            maxx = 8
+
+        if y < 3:
+            miny = 0
+            maxy = 2
+        elif y < 6:
+            miny = 3
+            maxy = 5
+        else:
+            miny = 6
+            maxy = 8
+
+
+        # for xx in range(3):
+            # for yy in range(3):
+
+
+
+    def getSubArray(self):
         return None
 
     def solve(self):
