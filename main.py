@@ -29,6 +29,8 @@ class Field():
 
 class Sudoku():
 
+    gameArray = None
+
     def __init__(self):
         "constructor"
         self.gameArray = [[Field()]*9 for i in range(9)]
@@ -60,9 +62,6 @@ class Sudoku():
         "docstring"
         # print(self.gameArray)
         return None
-
-    gameArray = None
-
 
 def main():
     sudoku = Sudoku()
