@@ -12,9 +12,10 @@ class Field():
         self.follow = list(n + 1 for n in range(9))
 
     def __setValue(self, val):
-        if (val > 0 and val < 10):
+        if val > 0 and val < 10:
             self.value = val
-        return false
+            return True
+        return False
 
     def checkFollow(self):
         if len(self.follow) is 1:
@@ -28,6 +29,8 @@ class Field():
     evalueatable = True
 
 class Sudoku():
+
+    gameArray = None
 
     def __init__(self):
         "constructor"
@@ -60,9 +63,6 @@ class Sudoku():
         "docstring"
         # print(self.gameArray)
         return None
-
-    gameArray = None
-
 
 def main():
     sudoku = Sudoku()
